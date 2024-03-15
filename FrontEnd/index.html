@@ -80,6 +80,53 @@
               >
             </div>
           </aside>
+          <aside
+            id="modal-add"
+            class="modal2 hidden"
+            aria-hidden="true"
+            role="modal"
+            aria-labelledby="titlemodal"
+          >
+            <div class="modal-wrapper1 js-modal-stop1">
+              <h3 id="titlemodal2">
+                Ajout photo<i class="fa-solid fa-xmark js-modal-close1"></i
+                ><i class="fa-solid fa-arrow-left js-modal-return"></i>
+              </h3>
+              <div class="add-work-btn">
+                <i class="fa-regular fa-image fa-6x"></i>
+                <label for="fileInput" class="add-work-inside"
+                  >+ Ajouter photo</label
+                >
+                <input
+                  type="file"
+                  id="fileInput"
+                  style="display: none"
+                  accept="image/*"
+                />
+                <p>jpg, png: 4mo max</p>
+                <div id="imagePreview" style="display: none">
+                  <img id="preview" alt="Image Preview" />
+                </div>
+              </div>
+              <div class="image-form">
+                <form id="imageForm">
+                  <p id="uploadError">
+                    Form isn't correctly filled! Please check again.
+                  </p>
+                  <label for="title">Title:</label>
+                  <input type="text" id="title" name="title" required />
+                  <label for="category">Category:</label>
+                  <select id="category" name="category" required></select>
+                </form>
+              </div>
+              <input
+                id="confirmButton"
+                class="validate-btn"
+                type="submit"
+                value="Valider"
+              />
+            </div>
+          </aside>
         </div>
         <div class="filtres" id="categories">
           <h3><a class="button1 selected">Tous</a></h3>
