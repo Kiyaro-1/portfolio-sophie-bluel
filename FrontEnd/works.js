@@ -1,3 +1,31 @@
+document.addEventListener("DOMContentLoaded", function () {
+  // Check if there is a valid token
+  const token = localStorage.getItem("accessToken");
+
+  // Select elements
+  const categories = document.getElementById("categories");
+  const loginbtn = document.getElementById("loginbtn");
+  const logoutbtn = document.getElementById("logoutbtn");
+
+  // If there is a valid token, then the user is logged in
+  if (token) {
+    categories.style.display = "none";
+    loginbtn.style.display = "none";
+    logoutbtn.style.display = "block";
+  } else {
+    loginbtn.style.display = "block";
+    logoutbtn.style.display = "none";
+  }
+});
+
+logoutbtn.addEventListener("click", function () {
+  // Clear the flag in local storage
+  localStorage.removeItem("accessToken");
+
+  // Redirect to the login page
+  window.location.href = "login.html";
+});
+
 // recover works
 const works = await fetch("http://localhost:5678/api/works").then((works) =>
   works.json()

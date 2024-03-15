@@ -177,6 +177,16 @@ nav li {
 li:hover {
   color: #b1663c;
 }
+nav a {
+  text-decoration: none;
+}
+nav a:visited {
+  text-decoration: none;
+  color: black;
+}
+nav a:hover {
+  color: #b1663c;
+}
 #login {
   width: 50%;
   margin-top: 10em;
