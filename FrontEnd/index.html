@@ -12,6 +12,13 @@
     />
     <meta name="description" content="" />
     <link rel="stylesheet" href="./assets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <header>
@@ -51,7 +58,29 @@
         </article>
       </section>
       <section id="portfolio">
-        <h2>Mes Projets</h2>
+        <div id="portfolio-header">
+          <h2>Mes Projets</h2>
+          <a href="#modal" id="modify" class="js-modal"
+            ><i class="fa-solid fa-pen-to-square"></i>modifier</a
+          >
+          <aside
+            id="modal"
+            class="modal1 hidden"
+            aria-hidden="true"
+            role="modal"
+            aria-labelledby="titlemodal"
+          >
+            <div class="modal-wrapper js-modal-stop">
+              <h3 id="titlemodal">
+                Galerie photo<i class="fa-solid fa-xmark js-modal-close"></i>
+              </h3>
+              <div class="gallery-modal"></div>
+              <a href="#modal-add" class="add-work js-modal-add"
+                >Ajouter une photo</a
+              >
+            </div>
+          </aside>
+        </div>
         <div class="filtres" id="categories">
           <h3><a class="button1 selected">Tous</a></h3>
         </div>
