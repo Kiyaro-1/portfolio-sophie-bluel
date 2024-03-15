@@ -146,6 +146,10 @@ fetchWorks();
 
 //Handle Delete Work
 const apiUrl = "http://localhost:5678/api/works";
+/**
+ *
+ * @param {number} index
+ */
 async function deleteWork(index) {
   const workToDelete = works[index];
   const token = localStorage.getItem("accessToken");
@@ -187,6 +191,10 @@ async function deleteWork(index) {
 }
 
 //Populate the modal with works
+/**
+ *
+ * @param {Array} worksForModal
+ */
 async function generateworksmodal(worksForModal) {
   const divgallerymodal = document.querySelector(".gallery-modal");
   divgallerymodal.innerHTML = "";
@@ -215,7 +223,6 @@ async function generateworksmodal(worksForModal) {
 /**
  *
  * @param {DOMEvent} e
- * @returns
  */
 const closemodal = (e) => {
   if (modal === null) return;
@@ -235,6 +242,10 @@ const closemodal = (e) => {
 };
 
 //Stop Propagation
+/**
+ *
+ * @param {DOMEvent} e
+ */
 const stopPropagation = (e) => {
   e.stopPropagation();
 };
@@ -359,6 +370,10 @@ fetch("http://localhost:5678/api/categories")
   });
 
 //image preview
+/**
+ *
+ * @param {HTMLInputElement} input
+ */
 function previewImage(input) {
   const imagePreview = document.getElementById("imagePreview");
   const preview = document.getElementById("preview");
