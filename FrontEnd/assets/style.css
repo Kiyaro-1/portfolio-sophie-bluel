@@ -177,6 +177,41 @@ nav li {
 li:hover {
   color: #b1663c;
 }
+#login {
+  width: 50%;
+  margin-top: 10em;
+  margin-right: 20em;
+  margin-left: 20em;
+}
+#login > * {
+  text-align: center;
+}
+#login h2 {
+  margin-bottom: 20px;
+}
+#login form {
+  text-align: left;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+#login input {
+  height: 50px;
+  font-size: 1.2em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  padding-left: 0.8em;
+}
+#login label {
+  margin: 1em 0 1em 0;
+}
+
+#loginerror {
+  color: red;
+  display: none;
+}
+
 #introduction {
   display: flex;
   align-items: center;
