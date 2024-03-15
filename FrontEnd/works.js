@@ -21,6 +21,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 });
 
+//Add event listener for logout button
 logoutbtn.addEventListener("click", function () {
   // Clear the flag in local storage
   localStorage.removeItem("accessToken");
@@ -127,6 +128,22 @@ const openmodal = (worksForModal) => (e) => {
   generateworksmodal(worksForModal);
 };
 
+// Fetch works from API
+const fetchWorks = async () => {
+  try {
+    const response = await fetch("http://localhost:5678/api/works");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
+    }
+    const worksData = await response.json();
+    // Call generateworksmodal initially with fetched works data
+    generateworksmodal(worksData);
+  } catch (error) {
+    console.error("Error fetching works:", error);
+  }
+};
+fetchWorks();
+
 //Handle Delete Work
 const apiUrl = "http://localhost:5678/api/works";
 async function deleteWork(index) {
@@ -169,6 +186,7 @@ async function deleteWork(index) {
   }
 }
 
+//Populate the modal with works
 async function generateworksmodal(worksForModal) {
   const divgallerymodal = document.querySelector(".gallery-modal");
   divgallerymodal.innerHTML = "";
@@ -216,26 +234,12 @@ const closemodal = (e) => {
   modal = null;
 };
 
-// Fetch works from API
-const fetchWorks = async () => {
-  try {
-    const response = await fetch("http://localhost:5678/api/works");
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    const worksData = await response.json();
-    // Call generateworksmodal initially with fetched works data
-    generateworksmodal(worksData);
-  } catch (error) {
-    console.error("Error fetching works:", error);
-  }
-};
-fetchWorks();
-
+//Stop Propagation
 const stopPropagation = (e) => {
   e.stopPropagation();
 };
 
+//add event listener for opening modal through modify button
 document.querySelectorAll(".js-modal").forEach((a) => {
   a.addEventListener("click", async (e) => {
     // Fetch works data
@@ -299,6 +303,7 @@ const closemodal2 = (e) => {
   modal2 = null;
 };
 
+// Add event listener for return button
 document.querySelectorAll(".js-modal-return").forEach((a) => {
   a.addEventListener("click", async (e) => {
     // Fetch works data
@@ -313,6 +318,7 @@ document.querySelectorAll(".js-modal-return").forEach((a) => {
   });
 });
 
+//Add event listener for add-work button
 document.querySelectorAll(".js-modal-add").forEach((a) => {
   a.addEventListener("click", async (e) => {
     // Fetch works data
@@ -327,11 +333,12 @@ document.querySelectorAll(".js-modal-add").forEach((a) => {
   });
 });
 
+//Add event listener for confirm image upload button
 document
   .getElementById("confirmButton")
   .addEventListener("click", confirmImage);
 
-// Fetching categories from API
+// Fetching categories from API for upload image form
 fetch("http://localhost:5678/api/categories")
   .then((response) => response.json())
   .then((categories) => {
@@ -412,11 +419,15 @@ async function confirmImage() {
       });
       clearForm();
 
+      //fetch new works from api
       const updatedResponse = await fetch("http://localhost:5678/api/works");
       const updatedWorks = await updatedResponse.json();
 
-      generateworksmodal(updatedWorks);
+      // Update the works array with the new data
+      works.splice(0, works.length, ...updatedWorks);
 
+      //Update works both in main page and in modal display
+      generateworksmodal(updatedWorks);
       generateworks(updatedWorks);
     } else {
       uploadError.style.display = "block";
@@ -428,6 +439,7 @@ async function confirmImage() {
   }
 }
 
+//clear form function
 function clearForm() {
   const form = document.getElementById("imageForm");
   form.reset();
